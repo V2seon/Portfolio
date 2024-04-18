@@ -11,41 +11,43 @@ for (let i = startNumber; i <= endNumber; i++) {
 }
 
 let remainingImages = [...imageFiles]; // 남은 이미지 배열 (복사본)
-let lastShownIndex = -1; // 마지막으로 보여준 이미지 인덱스 초기화
+let shownImages = new Set(); // 이미 보여진 이미지 저장할 Set
+let numberindex = 0;
 
 function getRandomImage() {
-    console.log("클릭")
+    if(numberindex >= endNumber){
+        numberindex = 0;
+    }
+    numberindex++;
     if (remainingImages.length === 0) {
         // 모든 이미지를 보여준 경우, 초기화
         remainingImages = [...imageFiles];
+        shownImages.clear(); // 보여진 이미지 Set 초기화
     }
 
-    let randomIndex;
+    let randomImage;
     do {
-        // 남은 이미지 중에서 랜덤하게 인덱스 선택
-        randomIndex = Math.floor(Math.random() * remainingImages.length);
-    } while (randomIndex === lastShownIndex); // 이전에 보여준 이미지와 중복되지 않도록 반복
+        // 남은 이미지 중에서 랜덤하게 선택
+        const randomIndex = Math.floor(Math.random() * remainingImages.length);
+        randomImage = remainingImages[randomIndex];
+    } while (shownImages.has(randomImage)); // 이미 보여진 이미지는 건너뛰기
 
     // 선택한 이미지 보여주기
-    const randomImage = remainingImages[randomIndex];
     const imageElement = document.getElementById('randomImage');
     imageElement.src = randomImage;
 
-    // 문제 번호 설정
-//    const questionNumber = document.getElementById('questionNumber');
-//    const currentQuestionNumber = startNumber + randomIndex;
-//    questionNumber.innerText = `문제 번호: ${currentQuestionNumber}`;
+    // 이미지를 보여준 것으로 처리
+    shownImages.add(randomImage);
 
     // 사용된 이미지는 남은 이미지 배열에서 제거
-    remainingImages.splice(randomIndex, 1);
-
-    // 마지막으로 보여준 이미지 인덱스 업데이트
-    lastShownIndex = randomIndex;
+    remainingImages = remainingImages.filter(image => image !== randomImage);
+    const imageIndex = document.getElementById('imageIndex');
+    imageIndex.textContent = '( '+numberindex+' / '+ endNumber+' )'
 }
 
 // 페이지 로드 시 초기 이미지 설정
 getRandomImage();
 
 // 이미지 클릭 시 새로운 이미지 보여주기
-const imageContainer = document.getElementById('imageContainer');
-imageContainer.addEventListener('click', getRandomImage);
+const nextButton = document.getElementById('nextButton');
+nextButton.addEventListener('click', getRandomImage);
