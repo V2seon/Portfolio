@@ -1,14 +1,18 @@
 // 이미지 파일명 배열
-const imageFiles = [
-    '../images/question/img.png',
-    '../banner.jpg'
-    // 여기에 추가 이미지 파일명을 넣어주세요
-];
+const imageFiles = [];
+
+// 이미지 파일명을 배열에 추가 (1.png부터 33.png까지)
+const startNumber = 1;
+const endNumber = 33;
+
+for (let i = startNumber; i <= endNumber; i++) {
+    const fileName = `${i}.png`;
+    imageFiles.push(fileName);
+}
 
 let remainingImages = [...imageFiles]; // 남은 이미지 배열 (복사본)
 
 function getRandomImage() {
-    console.log("클릭")
     if (remainingImages.length === 0) {
         // 모든 이미지를 보여준 경우, 초기화
         remainingImages = [...imageFiles];
