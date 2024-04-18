@@ -3,7 +3,7 @@ const imageFiles = [];
 
 // 이미지 파일명을 배열에 추가 (1.png부터 5.png까지)
 const startNumber = 1;
-const endNumber = 5;
+const endNumber = 190;
 
 for (let i = startNumber; i <= endNumber; i++) {
     const fileName = `/portfolio/images/question/${i}.png`;
@@ -15,6 +15,8 @@ let shownImages = new Set(); // 이미 보여진 이미지 저장할 Set
 let numberindex = 0;
 let thisIndex;
 function getRandomImage() {
+    const imageIndex1 = document.getElementById('data');
+    imageIndex1.textContent = '정답 : ';
     if(numberindex >= endNumber){
         numberindex = 0;
     }
@@ -47,8 +49,9 @@ function getRandomImage() {
 }
 
 function getrightAnswer(){
+    console.log(answers[thisIndex])
     const imageIndex = document.getElementById('data');
-    imageIndex.textContent = '정답 : ' + answers[thisIndex]
+    imageIndex.textContent = '정답 : ' + answers[thisIndex];
 }
 
 // 페이지 로드 시 초기 이미지 설정
@@ -58,6 +61,6 @@ getRandomImage();
 const nextButton = document.getElementById('nextButton');
 nextButton.addEventListener('click', getRandomImage);
 
-const nextButton = document.getElementById('prevButton');
-nextButton.addEventListener('click', getrightAnswer);
+const answerButton = document.getElementById('answerButton');
+answerButton.addEventListener('click', getrightAnswer);
 
