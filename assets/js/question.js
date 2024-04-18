@@ -45,9 +45,18 @@ function getRandomImage() {
     imageIndex.textContent = '( '+numberindex+' / '+ endNumber+' )'
 }
 
+function getrightAnswer(){
+    const imageIndex = document.getElementById('data');
+    imageIndex.textContent = '정답 : '
+}
+
 // 페이지 로드 시 초기 이미지 설정
 getRandomImage();
 
 // 이미지 클릭 시 새로운 이미지 보여주기
 const nextButton = document.getElementById('nextButton');
 nextButton.addEventListener('click', getRandomImage);
+
+const nextButton = document.getElementById('prevButton');
+nextButton.addEventListener('click', getrightAnswer);
+
