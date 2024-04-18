@@ -8,6 +8,7 @@ const imageFiles = [
 let remainingImages = [...imageFiles]; // 남은 이미지 배열 (복사본)
 
 function getRandomImage() {
+    console.log("클릭")
     if (remainingImages.length === 0) {
         // 모든 이미지를 보여준 경우, 초기화
         remainingImages = [...imageFiles];
