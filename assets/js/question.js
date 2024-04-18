@@ -1,7 +1,7 @@
 // 이미지 파일명 배열
 const imageFiles = [
-    'images/question/img.png',
-    'banner.jpg'
+    '../images/question/img.png',
+    '../banner.jpg'
     // 여기에 추가 이미지 파일명을 넣어주세요
 ];
 
