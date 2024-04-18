@@ -13,7 +13,7 @@ for (let i = startNumber; i <= endNumber; i++) {
 let remainingImages = [...imageFiles]; // 남은 이미지 배열 (복사본)
 let shownImages = new Set(); // 이미 보여진 이미지 저장할 Set
 let numberindex = 0;
-
+let thisIndex;
 function getRandomImage() {
     if(numberindex >= endNumber){
         numberindex = 0;
@@ -30,6 +30,7 @@ function getRandomImage() {
         // 남은 이미지 중에서 랜덤하게 선택
         const randomIndex = Math.floor(Math.random() * remainingImages.length);
         randomImage = remainingImages[randomIndex];
+        thisIndex = randomIndex;
     } while (shownImages.has(randomImage)); // 이미 보여진 이미지는 건너뛰기
 
     // 선택한 이미지 보여주기
@@ -47,7 +48,7 @@ function getRandomImage() {
 
 function getrightAnswer(){
     const imageIndex = document.getElementById('data');
-    imageIndex.textContent = '정답 : '
+    imageIndex.textContent = '정답 : ' + answers[thisIndex]
 }
 
 // 페이지 로드 시 초기 이미지 설정
