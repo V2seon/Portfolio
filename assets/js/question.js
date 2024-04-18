@@ -6,7 +6,7 @@ const startNumber = 1;
 const endNumber = 33;
 
 for (let i = startNumber; i <= endNumber; i++) {
-    const fileName = `${i}.png`;
+    const fileName = '/images/question/'+`${i}.png`;
     imageFiles.push(fileName);
 }
 
