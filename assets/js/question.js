@@ -15,8 +15,8 @@ let shownImages = new Set(); // 이미 보여진 이미지 저장할 Set
 let numberindex = 0;
 let thisIndex;
 function getRandomImage() {
-    const imageIndex1 = document.getElementById('data');
-    imageIndex1.textContent = '정답 : ';
+    const imageIndex1 = document.getElementById('answer');
+    imageIndex1.textContent = '';
     if(numberindex >= endNumber){
         numberindex = 0;
     }
@@ -32,13 +32,12 @@ function getRandomImage() {
         // 남은 이미지 중에서 랜덤하게 선택
         const randomIndex = Math.floor(Math.random() * remainingImages.length);
         randomImage = remainingImages[randomIndex];
-        thisIndex = randomIndex;
     } while (shownImages.has(randomImage)); // 이미 보여진 이미지는 건너뛰기
 
     // 선택한 이미지 보여주기
     const imageElement = document.getElementById('randomImage');
     imageElement.src = randomImage;
-
+    thisIndex = randomImage.match(/\d+/)[0];
     // 이미지를 보여준 것으로 처리
     shownImages.add(randomImage);
 
@@ -49,9 +48,8 @@ function getRandomImage() {
 }
 
 function getrightAnswer(){
-    console.log(answers[thisIndex])
-    const imageIndex = document.getElementById('data');
-    imageIndex.textContent = '정답 : ' + answers[thisIndex];
+    const answerText = document.getElementById('answer');
+    answerText.textContent = answers[thisIndex-1];
 }
 
 // 페이지 로드 시 초기 이미지 설정
