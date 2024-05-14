@@ -37,8 +37,6 @@ function getRandomImage() {
     // 선택한 이미지 보여주기
     const imageElement = document.getElementById('randomImage');
     imageElement.src = randomImage;
-    console.log("이미지 경로 : "+randomImage);
-        console.log("텍스트 : "+randomImage.match(/\d+/)[0]);
     thisIndex = randomImage.match(/\d+/)[0];
     // 이미지를 보여준 것으로 처리
     shownImages.add(randomImage);
