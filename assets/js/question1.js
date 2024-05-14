@@ -6,7 +6,7 @@ const startNumber = 1;
 const endNumber = 120;
 
 for (let i = startNumber; i <= endNumber; i++) {
-    const fileName = `/portfolio/images/question1/${i}.png`;
+    const fileName = `/portfolio/images/newque/${i}.png`;
     imageFiles.push(fileName);
 }
 
@@ -50,6 +50,7 @@ function getRandomImage() {
 function getrightAnswer(){
     const answerText = document.getElementById('answer');
     answerText.textContent = answers[thisIndex-1];
+    console.log(thisIndex);
 }
 
 // 페이지 로드 시 초기 이미지 설정
