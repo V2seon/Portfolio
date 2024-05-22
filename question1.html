@@ -3,17 +3,43 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <style>
+        .container {
+            display: flex;
+            width: 100%;
+            height: 100px;
+        }
+
+        .container button {
+            flex: 1;
+            margin: 7px;
+            box-sizing: border-box;
+            border-radius: 15px;
+            cursor: pointer;
+            border: 2px solid black;
+            font-size: 45px;
+
+        }
+    </style>
 </head>
 <body>
 <h1 id="imageIndex"></h1>
 <button id="nextButton" style="background-color: dodgerblue; color: white; padding: 10px 20px;border: none; border-radius: 5px; cursor: pointer; margin-right: 20px; width: 35%; height: 150px; font-size: 80px;"> 다음 </button>
-<button id="answerButton" style="background-color: crimson; color: white; padding: 10px 20px;border: none; border-radius: 5px; cursor: pointer; width: 35%; height: 150px; font-size: 80px;"> 정답 </button>
+<!--<button id="answerButton" style="background-color: crimson; color: white; padding: 10px 20px;border: none; border-radius: 5px; cursor: pointer; width: 35%; height: 150px; font-size: 80px;"> 정답 </button>-->
 <hr>
 <h1 id="data" style="color : red;"> 정답 : <span id="answer" style="color : black"></span> </h1>
+<hr>
+<div class="container">
+    <button onclick="ckanswer(1)">①</button>
+    <button onclick="ckanswer(2)">②</button>
+    <button onclick="ckanswer(3)">③</button>
+    <button onclick="ckanswer(4)">④</button>
+</div>
 <hr>
 <div id="imageContainer">
   <img id="randomImage" src="" alt="Random Image" style=" padding: 10px;border: 2px solid black; width: 100%; height: auto; display: block;">
 </div>
+<h1 id="answerIndex"></h1>
 <script>
 
     const answers = [
