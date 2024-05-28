@@ -3,7 +3,7 @@ const imageFiles = [];
 
 // 이미지 파일명을 배열에 추가 (1.png부터 5.png까지)
 const startNumber = 1;
-const endNumber = 540;
+const endNumber = 570;
 let yanswer = 0;
 let answerYN = 1;
 
